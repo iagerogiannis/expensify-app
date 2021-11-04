@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
-import { filters, altFilters } from '../fixtures/filters';
+import filters from '../fixtures/filters';
 
 let setStartDateSpy, setEndDateSpy, setTextFilterSpy, sortByDateSpy, sortByAmountSpy, wrapper;
 
@@ -13,7 +13,7 @@ beforeEach(() => {
     sortByAmountSpy = jest.fn();
     wrapper = shallow(
         <ExpenseListFilters
-            filters = {filters}
+            filters = {filters[0]}
             setStartDate={setStartDateSpy}
             setEndDate={setEndDateSpy}
             setTextFilter={setTextFilterSpy}
@@ -29,14 +29,14 @@ test('should render ExpenseListFilters correctly', () => {
 
 test('should render ExpenseListFilters with alt data correctly', () => {
     wrapper.setProps({
-        filters: altFilters
+        filters: filters[1]
     });
 });
 
 test('should handle onDatesChange', () => {
-    wrapper.find('DateRangePicker').prop('onDatesChange')({ startDate: altFilters.startDate, endDate: altFilters.endDate });
-    expect(setStartDateSpy).toHaveBeenCalledWith(altFilters.startDate);
-    expect(setEndDateSpy).toHaveBeenCalledWith(altFilters.endDate);
+    wrapper.find('DateRangePicker').prop('onDatesChange')({ startDate: filters[1].startDate, endDate: filters[1].endDate });
+    expect(setStartDateSpy).toHaveBeenCalledWith(filters[1].startDate);
+    expect(setEndDateSpy).toHaveBeenCalledWith(filters[1].endDate);
 });
 
 test('should handle onTextChange', () => {
@@ -50,7 +50,7 @@ test('should handle onTextChange', () => {
 test('should handle onSortByChange for sort by date', () => {
     const value = 'date';
     wrapper.setProps({
-        filters: altFilters
+        filters: filters[1]
     });
     wrapper.find('select').simulate('change', {
         target: { value }
