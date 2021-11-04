@@ -13,7 +13,7 @@ export const ExpensesSummary = ({ expensesCount, expensesTotal }) => {
     const formatedExpensesTotal = numeral(expensesTotal / 100).format('0,0.00 $');
 
     return (
-        <p>Viewing {expensesCount} {expenseWord} totalling {formatedExpensesTotal}</p>
+        <h1>Viewing {expensesCount} {expenseWord} totalling {formatedExpensesTotal}</h1>
     )
 };
 
