@@ -7,21 +7,21 @@ import 'numeral/locales/it';
 
 numeral.locale('it');
 
-export const ExpensesSummary = ({ expenses }) => {
+export const ExpensesSummary = ({ expensesCount, expensesTotal }) => {
 
-    const expenseCount = expenses.length;
-    const expensesTotal = getExpensesTotal(expenses);
-    const expenseWord = expenses.length === 1 ? 'expense' : 'expenses';
+    const expenseWord = expensesCount === 1 ? 'expense' : 'expenses';
     const formatedExpensesTotal = numeral(expensesTotal / 100).format('0,0.00 $');
 
     return (
-        <p>Viewing {expenseCount} {expenseWord} totalling {formatedExpensesTotal}</p>
+        <p>Viewing {expensesCount} {expenseWord} totalling {formatedExpensesTotal}</p>
     )
 };
 
 const mapStateToProps = (state) => {
+    const visibleExpenses = selectExpenses(state.expenses, state.filters)
     return {
-        expenses: selectExpenses(state.expenses, state.filters)
+        expensesCount: visibleExpenses.length,
+        expensesTotal: getExpensesTotal(visibleExpenses)
     };
 };
 
