@@ -1,0 +1,27 @@
+.button {
+  background-color: $sky-blue;
+  color: white;
+  border: none;
+  transition: transform 0.2s;
+  font-size: $font-large;
+  font-weight: 300;
+  padding: $s-size;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1;
+  min-width: 18rem;
+  text-align: center;
+}
+
+.button:hover {
+  transform: scale(1.075);
+}
+
+.button:active {
+  transition: transform 0s;
+  transform: scale(0.95);
+}
+
+.button--secondary {
+  background-color: #888;
+}

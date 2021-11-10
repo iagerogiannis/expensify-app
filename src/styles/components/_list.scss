@@ -1,0 +1,69 @@
+.list-header {
+  background-color: $off-white;
+  border: 1px solid darken($off-white, 7%);
+  color: $grey;
+  display: flex;
+  justify-content: space-between;
+  padding: $s-size $m-size;
+}
+
+.list-item {
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  padding: $s-size $m-size;
+  text-decoration: none;
+  > * {
+    color: black;
+    margin: 0;
+  }
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: lighten($off-white, 2%);
+  }
+  @media (min-width: $desktop-breakpoint-2) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.list-item__expense {
+  word-break: break-all;
+  flex-direction: column;
+  > * {
+    margin: 0;
+  }
+  h3 {
+    margin-top: $xs-size;
+  }
+  p {
+    color: $grey;
+    font-size: $font-small;
+  }
+  @media (min-width: $desktop-breakpoint-2) {
+    padding-right: 10rem;
+    p {
+      margin-bottom: $xs-size;
+    }
+  }
+}
+
+.list-item__amount {
+  color: black;
+  padding: $s-size 0 0 0;
+  @media (min-width: $desktop-breakpoint-2) {
+    padding: $s-size 0;
+  }
+}
+
+.list-item--message {
+  margin: 0;
+  border: 1px solid darken($off-white, 7%);
+  border-top: none;
+  padding: $s-size $m-size;
+  font-style: italic;
+  color: $grey;
+  text-align: center;
+}
